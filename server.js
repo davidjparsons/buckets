@@ -3,13 +3,14 @@ var http     = require('http'),
 	express  = require('express'),
 	mysql    = require('mysql')
 	parser   = require('body-parser');
+    require('dotenv').config()
  
 // Database Connection
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'admin_restapi',
-  password : '9aqeofTowL',
-  database : 'node_shop'
+  host     : process.env.DB_HOST,
+  user     : process.env.DB_USER,
+  password : process.env.DB_PASS,
+  database : process.env.DB_NAME
 });
 try {
 	connection.connect();
@@ -17,8 +18,8 @@ try {
 } catch(e) {
 	console.log('Database Connetion failed:' + e);
 }
- 
- 
+
+
 // Setup express
 var app = express();
 app.use(parser.json());

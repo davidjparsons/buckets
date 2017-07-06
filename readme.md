@@ -95,5 +95,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * deoxxa for linking me to http://blog.timoxley.com/post/47041269194/avoid-else-return-early 
 * Hat tip to anyone who's code was used
 * Inspiration
+* https://stackoverflow.com/questions/32209972/hardcoded-mysql-user-and-password-in-node-js
+* https://www.npmjs.com/package/dotenv
 * etc
 
