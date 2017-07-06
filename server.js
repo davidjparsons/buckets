@@ -121,7 +121,7 @@ app.post('/api/team/add', function (req,res) {
 	) {
 		var name = req.body.name, leagueId = req.body.leagueId;
 
-		connection.query('INSERT INTO league (name, leagueId) VALUES (?, ?)', 
+		connection.query('INSERT INTO team (name, leagueId) VALUES (?, ?)', 
 			[name, leagueId], 
 			function(err, result) {
 		  		if (err) { res.status(400).send(err); return; }
