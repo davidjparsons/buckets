@@ -148,10 +148,10 @@ app.post('/api/statevent/edit/:id', function (req,res) {
 });
 
 // Endpoint: http://127.0.0.1:5000/product/delete/{:product id} delete a particular id
-app.delete('/api/product/delete/:id', function (req,res) {
+app.delete('/api/statevent/delete/:id', function (req,res) {
 	var id = req.params.id;
  
-	connection.query('DELETE FROM nd_products WHERE id = ?', [id], function(err, result) {
+	connection.query('DELETE FROM statEvent WHERE id = ?', [id], function(err, result) {
   		if (!err){
   			var response = [];
  
