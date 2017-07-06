@@ -67,12 +67,12 @@ This app is deployed on a digitalocean VPS running Ubuntu
 
 See the following relationships.
 
-league.id = team.leagueId 
-team.id = player.teamId
-statEvent.teamId = team.id
-statEvent.playerId = player.id
-statType.id = statEvent.statTypeId
-league.sportID = sport.id
+* league.id = team.leagueId 
+* team.id = player.teamId
+* statEvent.teamId = team.id
+* statEvent.playerId = player.id
+* statType.id = statEvent.statTypeId
+* league.sportID = sport.id
 
 ## Built With
 
