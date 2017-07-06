@@ -97,5 +97,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Inspiration
 * https://stackoverflow.com/questions/32209972/hardcoded-mysql-user-and-password-in-node-js
 * https://www.npmjs.com/package/dotenv
+* https://stackoverflow.com/questions/4308610/how-to-ignore-certain-files-in-git
+* https://help.github.com/articles/ignoring-files/
 * etc
 
