@@ -63,6 +63,17 @@ Give an example
 
 This app is deployed on a digitalocean VPS running Ubuntu
 
+## Schema
+
+See the following relationships.
+
+league.id = team.leagueId 
+team.id = player.teamId
+statEvent.teamId = team.id
+statEvent.playerId = player.id
+statType.id = statEvent.statTypeId
+league.sportID = sport.id
+
 ## Built With
 
 * [React](https://facebook.github.io/react/) - The web framework used

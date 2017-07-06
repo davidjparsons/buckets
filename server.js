@@ -68,7 +68,7 @@ app.post('/product/add', function (req,res) {
 });*/
 
 
-//refactored if (err) as per deoxxa's suggestion
+//refactored above code around the `if (err)` as per deoxxa's suggestion
 app.post('/product/add', function (req,res) {
 	var response = [];
 
