@@ -81,7 +81,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **BDavid Parsons** - *Initial work* - [DavidJParsons](https://github.com/davidjparsons)
+* **David Parsons** - *Initial work* - [DavidJParsons](https://github.com/davidjparsons)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
