@@ -31,7 +31,7 @@ app.get('/api', function (req, res) {
 	res.send('<html><body><p>Welcome to sShop App</p></body></html>');
 });
 
-//Endpoint: http://127.0.0.1:5000/product/add
+//Endpoint: http://127.0.0.1:5000/product/add add new
 app.post('/api/statEvent/add', function (req,res) {
 	var response = [];
 
@@ -66,11 +66,11 @@ app.post('/api/statEvent/add', function (req,res) {
 	}
 });
 
-// Endpoint: http://127.0.0.1:5000/product/{:product id}
-app.get('/api/product/:id', function (req,res) {
+// Endpoint: http://127.0.0.1:5000/product/{:product id} search a particular statEvent id
+app.get('/api/statEvent/:id', function (req,res) {
 	var id = req.params.id;
  
-	connection.query('SELECT * from nd_products where id = ?', [id], function(err, rows, fields) {
+	connection.query('SELECT * from statEvent where id = ?', [id], function(err, rows, fields) {
   		if (!err){
   			var response = [];
  
@@ -88,7 +88,29 @@ app.get('/api/product/:id', function (req,res) {
 	});
 });
 
-// Endpoint: http://127.0.0.1:5000/product/edit/{:product id}
+// Endpoint: http://127.0.0.1:5000/product/{:product id} search all statEvent
+app.get('/api/statEvent', function (req,res) {
+	console.log(req);
+ 
+	connection.query('SELECT * from statEvent', function(err, rows, fields) {
+  		if (!err){
+  			var response = [];
+ 
+			if (rows.length != 0) {
+				response.push({'result' : 'success', 'data' : rows});
+			} else {
+				response.push({'result' : 'error', 'msg' : 'No Results Found'});
+			}
+ 
+			res.setHeader('Content-Type', 'application/json');
+	    	res.status(200).send(JSON.stringify(response));
+  		} else {
+		    res.status(400).send(err);
+	  	}
+	});
+});
+
+// Endpoint: http://127.0.0.1:5000/product/edit/{:product id} edit a particular id
 app.post('/api/product/edit/:id', function (req,res) {
 	var id = req.params.id, response = [];
  
@@ -124,7 +146,7 @@ app.post('/api/product/edit/:id', function (req,res) {
 	}
 });
 
-// Endpoint: http://127.0.0.1:5000/product/delete/{:product id}
+// Endpoint: http://127.0.0.1:5000/product/delete/{:product id} delete a particular id
 app.delete('/api/product/delete/:id', function (req,res) {
 	var id = req.params.id;
  
