@@ -27,59 +27,23 @@ app.use(parser.urlencoded({ extended: true }));
 app.set('port', process.env.PORT || 3000);
  
 // Set default route
-app.get('/', function (req, res) {
+app.get('/api', function (req, res) {
 	res.send('<html><body><p>Welcome to sShop App</p></body></html>');
 });
 
-/*// Endpoint: http://127.0.0.1:5000/product/add
-app.post('/product/add', function (req,res) {
+//Endpoint: http://127.0.0.1:5000/product/add
+app.post('/api/statEvent/add', function (req,res) {
 	var response = [];
 
 	if (
-		typeof req.body.name !== 'undefined' && 
-		typeof req.body.price !== 'undefined' && 
-		typeof req.body.imageUrl !== 'undefined'
+		typeof req.body.statTypeId !== 'undefined' && 
+		typeof req.body.value !== 'undefined' && 
+        typeof req.body.teamId !== 'undefined' && 
+		typeof req.body.playerId !== 'undefined'
 	) {
 		var name = req.body.name, price = req.body.price, imageUrl = req.body.imageUrl;
 
-		connection.query('INSERT INTO nd_products (product_name, product_price, product_image) VALUES (?, ?, ?)', 
-			[name, price, imageUrl], 
-			function(err, result) {
-		  		if (!err){
-
-					if (result.affectedRows != 0) {
-						response.push({'result' : 'success'});
-					} else {
-						response.push({'msg' : 'No Result Found'});
-					}
-
-					res.setHeader('Content-Type', 'application/json');
-			    	res.status(200).send(JSON.stringify(response));
-		  		} else {
-				    res.status(400).send(err);
-			  	}
-			});
-
-	} else {
-		response.push({'result' : 'error', 'msg' : 'Please fill required details'});
-		res.setHeader('Content-Type', 'application/json');
-    	res.status(200).send(JSON.stringify(response));
-	}
-});*/
-
-
-//refactored above code around the `if (err)` as per deoxxa's suggestion
-app.post('/product/add', function (req,res) {
-	var response = [];
-
-	if (
-		typeof req.body.name !== 'undefined' && 
-		typeof req.body.price !== 'undefined' && 
-		typeof req.body.imageUrl !== 'undefined'
-	) {
-		var name = req.body.name, price = req.body.price, imageUrl = req.body.imageUrl;
-
-		connection.query('INSERT INTO nd_products (product_name, product_price, product_image) VALUES (?, ?, ?)', 
+		connection.query('INSERT INTO statEvent (statTypeId, value, teamId, playerId) VALUES (?, ?, ?)', 
 			[name, price, imageUrl], 
 			function(err, result) {
 		  		if (err) { res.status(400).send(err); return; }
@@ -103,7 +67,7 @@ app.post('/product/add', function (req,res) {
 });
 
 // Endpoint: http://127.0.0.1:5000/product/{:product id}
-app.get('/product/:id', function (req,res) {
+app.get('/api/product/:id', function (req,res) {
 	var id = req.params.id;
  
 	connection.query('SELECT * from nd_products where id = ?', [id], function(err, rows, fields) {
@@ -125,7 +89,7 @@ app.get('/product/:id', function (req,res) {
 });
 
 // Endpoint: http://127.0.0.1:5000/product/edit/{:product id}
-app.post('/product/edit/:id', function (req,res) {
+app.post('/api/product/edit/:id', function (req,res) {
 	var id = req.params.id, response = [];
  
 	if (
@@ -161,7 +125,7 @@ app.post('/product/edit/:id', function (req,res) {
 });
 
 // Endpoint: http://127.0.0.1:5000/product/delete/{:product id}
-app.delete('/product/delete/:id', function (req,res) {
+app.delete('/api/product/delete/:id', function (req,res) {
 	var id = req.params.id;
  
 	connection.query('DELETE FROM nd_products WHERE id = ?', [id], function(err, result) {
