@@ -111,18 +111,19 @@ app.get('/api/statEvent', function (req,res) {
 });
 
 // Endpoint: http://127.0.0.1:5000/product/edit/{:product id} edit a particular id
-app.post('/api/product/edit/:id', function (req,res) {
+app.post('/api/statevent/edit/:id', function (req,res) {
 	var id = req.params.id, response = [];
  
 	if (
-		typeof req.body.name !== 'undefined' && 
-		typeof req.body.price !== 'undefined' && 
-		typeof req.body.imageUrl !== 'undefined'
+		typeof req.body.statTypeId !== 'undefined' && 
+		typeof req.body.value !== 'undefined' && 
+		typeof req.body.teamId !== 'undefined' && 
+		typeof req.body.playerId !== 'undefined'
 	) {
-		var name = req.body.name, price = req.body.price, imageUrl = req.body.imageUrl;
+		var statTypeId = req.body.statTypeId, value = req.body.value, teamId = req.body.teamId, playerId = req.body.playerId;
  
-		connection.query('UPDATE nd_products SET product_name = ?, product_price = ?, product_image = ? WHERE id = ?', 
-			[name, price, imageUrl, id], 
+		connection.query('UPDATE statEvent SET statTypeId = ?, value = ?, teamId = ?, playerId = ? WHERE id = ?', 
+			[statTypeId, value, teamId, playerId, id], 
 			function(err, result) {
 		  		if (!err){
  
