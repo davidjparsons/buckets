@@ -41,10 +41,10 @@ app.post('/api/statEvent/add', function (req,res) {
         typeof req.body.teamId !== 'undefined' && 
 		typeof req.body.playerId !== 'undefined'
 	) {
-		var name = req.body.name, price = req.body.price, imageUrl = req.body.imageUrl;
+		var statTypeId = req.body.statTypeId, value = req.body.value, teamId = req.body.teamId, playerId = req.body.playerId;
 
-		connection.query('INSERT INTO statEvent (statTypeId, value, teamId, playerId) VALUES (?, ?, ?)', 
-			[name, price, imageUrl], 
+		connection.query('INSERT INTO statEvent (statTypeId, value, teamId, playerId) VALUES (?, ?, ?, ?)', 
+			[statTypeId, value, teamId, playerId], 
 			function(err, result) {
 		  		if (err) { res.status(400).send(err); return; }
                   {
