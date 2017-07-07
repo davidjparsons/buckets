@@ -64,78 +64,13 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container theme-showcase" role="main">
-        
-        <!-- Main jumbotron for a primary marketing message or call to action 
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
         <h1>Theme example</h1>
         <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
         </div>
-        -->
-        <div class="row">
-        <div class="col-md-6">
-            <table class="table">
-            <thead>
-                <tr>
-                <th style="text-align:center;"><button type="button" class="btn btn-sm btn-default">MENU</button></th>
-                <th>12:00 <button type="button" class="btn btn-xs btn-default">edit</button><br>1st Quarter </th>
-                <th></th>
-                <th style="text-align:center;"><button type="button" class="btn btn-sm btn-default">START</button></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td style="text-align:center;">LIGHT</td>
-                <td colspan="2" style="text-align:center;"></td>
-                <td style="text-align:center;">DARK</td>
-                </tr>
-                <tr>
-                <td style="text-align:center;font-weight: bold;">28</td>
-                <td colspan="2" style="text-align:center;">Score</td>
-                <td style="text-align:center;font-weight: bold;">24</td>
-                </tr>
-                <tr>
-                <td style="text-align:center;">7</td>
-                <td colspan="2" style="text-align:center;">Team Fouls</td>
-                <td style="text-align:center;">4</td>
-                </tr>
-                <tr>
-                <td style="text-align:center;">0</td>
-                <td colspan="2" style="text-align:center;">Timeouts Left</td>
-                <td style="text-align:center;">1</td>
-                </tr>
-                <tr>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">TECH</button></td>
-                <td colspan="2" style="text-align:center;"></td>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">TECH</button></td>
-                </tr>
-                <tr>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">FOUL</button></td>
-                <td colspan="2" style="text-align:center;"></td>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">FOUL</button></td>
-                </tr>
-                <tr>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">1 PT</button></td>
-                <td colspan="2" style="text-align:center;"></td>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">1 PT</button></td>
-                </tr>
-                <tr>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">3 PT</button></td>
-                <td colspan="2" style="text-align:center;"></td>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">3 PT</button></td>
-                </tr>
-                <tr>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">2 PT</button></td>
-                <td colspan="2" style="text-align:center;"></td>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">2 PT</button></td>
-                </tr>
-                <tr>
-                <td colspan="3"><strong>Last play:</strong> Light scored 2 Points</td>
-                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">UNDO</button></td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
-        </div>
+
 
         <div class="page-header">
         <h1>Buttons</h1>
