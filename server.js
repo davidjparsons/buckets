@@ -270,6 +270,84 @@ app.get('/api/player', function (req,res) {
 	});
 });
 
+//game related Endpoints below
+//Endpoint: http://localhost:3000/api/game/add add new
+app.post('/api/game/add', function (req,res) {
+	var response = [];
+
+	if (
+		typeof req.body.name !== 'undefined' && 		
+        typeof req.body.leagueId !== 'undefined' 
+	) {
+		var name = req.body.name, leagueId = req.body.leagueId;
+
+		connection.query('INSERT INTO team (name, leagueId) VALUES (?, ?)', 
+			[name, leagueId], 
+			function(err, result) {
+		  		if (err) { res.status(400).send(err); return; }
+                  {
+					if (result.affectedRows != 0) {
+						response.push({'result' : 'success'});
+					} else {
+						response.push({'msg' : 'No Result Found'});
+					}
+
+					res.setHeader('Content-Type', 'application/json');
+			    	res.status(200).send(JSON.stringify(response));
+		  		} 
+			});
+
+	} else {
+		response.push({'result' : 'error', 'msg' : 'Please fill required details'});
+		res.setHeader('Content-Type', 'application/json');
+    	res.status(200).send(JSON.stringify(response));
+	}
+});
+
+// Endpoint: http://localhost:3000/api/team/{:team id} search a particular team id
+app.get('/api/team/:id', function (req,res) {
+	var id = req.params.id;
+ 
+	connection.query('SELECT * from team where id = ?', [id], function(err, rows, fields) {
+  		if (!err){
+  			var response = [];
+ 
+			if (rows.length != 0) {
+				response.push({'result' : 'success', 'data' : rows});
+			} else {
+				response.push({'result' : 'error', 'msg' : 'No Results Found'});
+			}
+ 
+			res.setHeader('Content-Type', 'application/json');
+	    	res.status(200).send(JSON.stringify(response));
+  		} else {
+		    res.status(400).send(err);
+	  	}
+	});
+});
+
+// Endpoint: http://localhost:3000/api/team search all teams
+app.get('/api/team', function (req,res) {
+	console.log(req);
+ 
+	connection.query('SELECT * from team', function(err, rows, fields) {
+  		if (!err){
+  			var response = [];
+ 
+			if (rows.length != 0) {
+				response.push({'result' : 'success', 'data' : rows});
+			} else {
+				response.push({'result' : 'error', 'msg' : 'No Results Found'});
+			}
+ 
+			res.setHeader('Content-Type', 'application/json');
+	    	res.status(200).send(JSON.stringify(response));
+  		} else {
+		    res.status(400).send(err);
+	  	}
+	});
+});
+
 //statType related Endpoints below
 //Endpoint: http://localhost:3000/api/statType/add add new
 app.post('/api/statType/add', function (req,res) {
