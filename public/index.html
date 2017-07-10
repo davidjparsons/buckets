@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Buckets - Front End</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-default">
@@ -20,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="#">Buckets</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,22 +63,31 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+
+    <input type="button" id="basicFetchButton" value="Try it">
+    <p id="resultOfGET">test</p>
+    <script>
+        const url = '/api/statevent';
+        document.getElementById("basicFetchButton").addEventListener("click", function(){
+                // Loading the jQuery code
+                fetch(url)
+                .then((resp) => resp.json()) // Transform the data into json
+                .then(function(data) {
+                    // Create and append the li's to the ul
+                })
+                .then(console.log())
+            })        
+    </script> 
+<p>
+<br>
     <div class="container theme-showcase" role="main">
-        
-        <!-- Main jumbotron for a primary marketing message or call to action 
-        <div class="jumbotron">
-        <h1>Theme example</h1>
-        <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
-        </div>
-        -->
         <div class="row">
         <div class="col-md-6">
             <table class="table">
             <thead>
                 <tr>
                 <th style="text-align:center;"><button type="button" class="btn btn-sm btn-default">MENU</button></th>
-                <th>12:00 <button type="button" class="btn btn-xs btn-default">edit</button><br>1st Quarter </th>
-                <th></th>
+                <th colspan="2" style="text-align:center;">12:00 <button type="button" class="btn btn-xs btn-default">edit</button><br>1st Quarter </th>
                 <th style="text-align:center;"><button type="button" class="btn btn-sm btn-default">START</button></th>
                 </tr>
             </thead>
@@ -134,190 +143,26 @@
                 </tr>
             </tbody>
             </table>
-        </div>
-        </div>
-
-        <div class="page-header">
-        <h1>Buttons</h1>
-        </div>
-        <p>
-        <button type="button" class="btn btn-lg btn-default">Default</button>
-        <button type="button" class="btn btn-lg btn-primary">Primary</button>
-        <button type="button" class="btn btn-lg btn-success">Success</button>
-        <button type="button" class="btn btn-lg btn-info">Info</button>
-        <button type="button" class="btn btn-lg btn-warning">Warning</button>
-        <button type="button" class="btn btn-lg btn-danger">Danger</button>
-        <button type="button" class="btn btn-lg btn-link">Link</button>
-        </p>
-        <p>
-        <button type="button" class="btn btn-default">Default</button>
-        <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-success">Success</button>
-        <button type="button" class="btn btn-info">Info</button>
-        <button type="button" class="btn btn-warning">Warning</button>
-        <button type="button" class="btn btn-danger">Danger</button>
-        <button type="button" class="btn btn-link">Link</button>
-        </p>
-        <p>
-        <button type="button" class="btn btn-sm btn-default">Default</button>
-        <button type="button" class="btn btn-sm btn-primary">Primary</button>
-        <button type="button" class="btn btn-sm btn-success">Success</button>
-        <button type="button" class="btn btn-sm btn-info">Info</button>
-        <button type="button" class="btn btn-sm btn-warning">Warning</button>
-        <button type="button" class="btn btn-sm btn-danger">Danger</button>
-        <button type="button" class="btn btn-sm btn-link">Link</button>
-        </p>
-        <p>
-        <button type="button" class="btn btn-xs btn-default">Default</button>
-        <button type="button" class="btn btn-xs btn-primary">Primary</button>
-        <button type="button" class="btn btn-xs btn-success">Success</button>
-        <button type="button" class="btn btn-xs btn-info">Info</button>
-        <button type="button" class="btn btn-xs btn-warning">Warning</button>
-        <button type="button" class="btn btn-xs btn-danger">Danger</button>
-        <button type="button" class="btn btn-xs btn-link">Link</button>
-        </p>
-
-
-        <div class="page-header">
-        <h1>Tables</h1>
-        </div>
-        <div class="row">
-        <div class="col-md-6">
             <table class="table">
             <thead>
                 <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th colspan="5">add to statEvent</th>
                 </tr>
             </thead>
+           <form>
             <tbody>
                 <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td><input type="text" placeholder="statTypeID" class="form-control"></td>
+                <td><input type="text" placeholder="value" class="form-control"></td>
+                <td><input type="text" placeholder="matchId" class="form-control"></td>
+                <td><input type="text" placeholder="teamId" class="form-control"></td>
+                <td><input type="text" placeholder="playerId" class="form-control"></td>
                 </tr>
             </tbody>
-            </table>
-        </div>
-        <div class="col-md-6">
-            <table class="table table-striped">
-            <thead>
-                <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                </tr>
-            </tbody>
+            </form>
             </table>
         </div>
         </div>
-
-        <div class="row">
-        <div class="col-md-6">
-            <table class="table table-bordered">
-            <thead>
-                <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td rowspan="2">1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@TwBootstrap</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
-        <div class="col-md-6">
-            <table class="table table-condensed">
-            <thead>
-                <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
-        </div>
-    </div>
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

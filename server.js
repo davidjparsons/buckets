@@ -27,9 +27,15 @@ app.use(parser.urlencoded({ extended: true }));
 app.set('port', process.env.PORT || 3000);
  
 // Set default route
-app.get('/api', function (req, res) {
-	res.send('<html><body><p>Welcome to sShop App</p></body></html>');
-});
+//var path = require('path');
+//app.get('/', function(req, res) {
+//    res.sendFile(path.join(__dirname + '/public/index.html'));
+//});
+
+//use app.use instead of app.get https://stackoverflow.com/questions/38757235/express-how-to-send-html-together-with-css-using-sendfile
+app.use(express.static("public"));
+
+
 
 //league related Endpoints below
 //Endpoint: http://localhost:3000/api/league/add add new
@@ -143,6 +149,29 @@ app.post('/api/team/add', function (req,res) {
     	res.status(200).send(JSON.stringify(response));
 	}
 });
+
+// rewrote by korynunn
+/*app.post('/product/add', function (request, response) {
+    var name = request.body.name,
+        price = request.body.price,
+        imageUrl = request.body.imageUrl;
+
+    if(!name || !price || !imageUrl){
+        return response.status(422).send(JSON.stringify({message: 'Please fill required details'}}));
+    }
+
+    connection.query(
+        'INSERT INTO nd_products (product_name, product_price, product_image) VALUES (?, ?, ?)', 
+        [name, price, imageUrl],
+        function(error, result){
+            if(error){
+                return response.status(500).send();
+            }
+
+            response.status(200).send();
+        }
+    );
+});*/
 
 // Endpoint: http://localhost:3000/api/team/{:team id} search a particular team id
 app.get('/api/team/:id', function (req,res) {
@@ -435,12 +464,13 @@ app.post('/api/statEvent/add', function (req,res) {
 		typeof req.body.statTypeId !== 'undefined' && 
 		typeof req.body.value !== 'undefined' && 
         typeof req.body.teamId !== 'undefined' && 
-		typeof req.body.playerId !== 'undefined'
+		typeof req.body.playerId !== 'undefined' &&
+		typeof req.body.matchId !== 'undefined'
 	) {
-		var statTypeId = req.body.statTypeId, value = req.body.value, teamId = req.body.teamId, playerId = req.body.playerId;
+		var statTypeId = req.body.statTypeId, value = req.body.value, teamId = req.body.teamId, playerId = req.body.playerId, matchId = req.body.matchId;
 
-		connection.query('INSERT INTO statEvent (statTypeId, value, teamId, playerId) VALUES (?, ?, ?, ?)', 
-			[statTypeId, value, teamId, playerId], 
+		connection.query('INSERT INTO statEvent (statTypeId, value, teamId, playerId, matchId) VALUES (?, ?, ?, ?, ?)', 
+			[statTypeId, value, teamId, playerId, matchId], 
 			function(err, result) {
 		  		if (err) { res.status(400).send(err); return; }
                   {
