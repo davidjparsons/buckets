@@ -386,7 +386,7 @@ app.post('/api/statType/add', function (req,res) {
 		typeof req.body.name !== 'undefined' && 		
         typeof req.body.sport !== 'undefined' 
 	) {
-		var name = req.body.name, sport = req.body.leagueId;
+		var name = req.body.name, sport = req.body.sport;
 
 		connection.query('INSERT INTO statType (name, sport) VALUES (?, ?)', 
 			[name, sport], 
