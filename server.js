@@ -38,7 +38,7 @@ app.use(express.static("public"));
 
 
 //league related Endpoints below
-//Endpoint: http://localhost:3000/api/league/add add new
+//Endpoint: http://localhost:3000/api/league/new add new
 app.post('/api/league/add', function (req,res) {
 	var response = [];
 
@@ -465,12 +465,12 @@ app.post('/api/statEvent/add', function (req,res) {
 		typeof req.body.value !== 'undefined' && 
         typeof req.body.teamId !== 'undefined' && 
 		typeof req.body.playerId !== 'undefined' &&
-		typeof req.body.matchId !== 'undefined'
+		typeof req.body.gameId !== 'undefined'
 	) {
-		var statTypeId = req.body.statTypeId, value = req.body.value, teamId = req.body.teamId, playerId = req.body.playerId, matchId = req.body.matchId;
+		var statTypeId = req.body.statTypeId, value = req.body.value, teamId = req.body.teamId, playerId = req.body.playerId, gameId = req.body.gameId;
 
-		connection.query('INSERT INTO statEvent (statTypeId, value, teamId, playerId, matchId) VALUES (?, ?, ?, ?, ?)', 
-			[statTypeId, value, teamId, playerId, matchId], 
+		connection.query('INSERT INTO statEvent (statTypeId, value, teamId, playerId, gameId) VALUES (?, ?, ?, ?, ?)', 
+			[statTypeId, value, teamId, playerId, gameId], 
 			function(err, result) {
 		  		if (err) { res.status(400).send(err); return; }
                   {

@@ -26,10 +26,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Admin</a></li>
+                <li><a href="/">Admin</a></li>
                 <li><a href="/pages/leagues.html">Leagues</a></li>
                 <li><a href="/pages/teams.html">Teams</a></li>
-                <li><a href="/pages/players.html">Players</a></li>
+                <li class="active"><a href="/pages/players.html">Players</a></li>
                 <li><a href="/pages/statTypes.html">Stat Types</a></li>
                 <li><a href="/pages/games.html">Games</a></li>
                 <li><a href="/pages/currentGame.html">Current Game <span class="sr-only">(current)</span></a></li>
@@ -43,13 +43,39 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-       <div class="list-group">
-            <button type="button" class="list-group-item"><a href="/pages/leagues.html">Leagues</a></button>
-            <button type="button" class="list-group-item"><a href="/pages/teams.html">Teams</a></button>
-            <button type="button" class="list-group-item"><a href="/pages/players.html">Players</a></button>
-            <button type="button" class="list-group-item"><a href="/pages/statTypes.html">Stat Types</a></button>
-            <button type="button" class="list-group-item"><a href="/pages/currentGame.html">Current Game <span class="sr-only">(current)</span></a></button>
+       <div class="container theme-showcase" role="main">
+        <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+            <thead>
+                <tr>
+                <th style="text-align:center;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td style="text-align:center;">LIGHT</td>
+                <td colspan="2" style="text-align:center;"></td>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-primary">DARK</button></td>
+                </tr>
+            </tbody>
+            </table>
+            <table class="table">
+            <form action="/api/statEvent/add" method="post">
+            <tbody>
+                <tr><input id="statTypeId" name="statTypeId" type="text" placeholder="statTypeID" class="form-control"></tr>
+                <tr><input id="value" name="value" placeholder="value" class="form-control"></tr>
+                <tr><input id="gameId" name="gameId" placeholder="gameId" class="form-control"></tr>
+                <tr><input id="teamId" name="teamId" placeholder="teamId" class="form-control"></tr>
+                <tr><input id="playerId" name="playerId" placeholder="playerId" class="form-control"></tr>
+            </tbody>
+            <button id="addStatEvent" type="submit" class="btn btn-primary">Add to Stat Event!</button>
+            
+            </form>
+            </table>
         </div>
+        </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
