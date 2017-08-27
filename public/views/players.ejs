@@ -1,0 +1,76 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+    <!-- start of main grid -->
+    <div class="grid-container grid-container-padded">
+         <div class="cell">
+            <h2>Players</h2>       
+        </div>
+        <!-- start of 'create new league form' -->
+        <div class="grid-x grid-margin-x">
+            <div class="medium-6 large-4 cell">
+                <h4>Add new player</h4>
+                <form>
+                <div class="row">
+                    <div class="medium-6 columns">
+                    <label>First name
+                        <input type="text" placeholder="First name">
+                    </label>
+                    <label>Last name
+                        <input type="text" placeholder="Last name">
+                    </label>
+                    <label>Date of birth
+                        <input type="date" placeholder="">
+                    </label> 
+                    <label>Number
+                        <input type="number" $input-number-spinners.false>
+                    </label>   
+                    <label>Position
+                        <input type="text" placeholder="Postion">
+                    </label>                                          
+                    <label>Team
+                        <select>
+                            <option value="" selected disabled>Please select</option>
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>                            
+                        </select>
+                    </label>                                     
+                    <input type="submit" class="button" value="Submit">
+                    </div>   
+                </div>
+                </form>
+            </div> <!-- ./medium-6 large-4 cell -->
+
+            <!-- start of 'existing leagues table' -->
+            <div class="medium-6 large-8 cell">
+                <h4>Existing players</h4>
+               <table>
+                <thead>
+                    <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Date of birth</th>
+                    <th>Number</th>
+                    <th>Position</th>                                        
+                    <th>Team</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                    <% data.forEach(function(player) { %>
+                       <tr>
+                         <td><%= player.first_name %></td>
+                         <td><%= player.last_name %></td>
+                         <td><%= player.date_of_birth.toDateString() %></td>
+                         <td><%= player.position %></td>
+                         <td><%= player.number %></td>
+                         <td><%= player.teamId %></td>
+                       </tr>
+                    <% }); %>                    
+                </tbody>
+                </table>
+            </div> <!-- ./medium-6 large-8 cell -->
+        </div> <!-- ./grid-x grid-margin-x -->
+    </div> <!-- ./grid-container grid-container-padded -->
+
+<% include partials/footer %>

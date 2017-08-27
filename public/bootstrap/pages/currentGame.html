@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Buckets - Front End</title>
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Buckets</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Admin</a></li>
+                <li><a href="/pages/leagues.html">Leagues</a></li>
+                <li><a href="/pages/teams.html">Teams</a></li>
+                <li><a href="/pages/players.html">Players</a></li>
+                <li><a href="/pages/statTypes.html">Stat Types</a></li>
+                <li><a href="/pages/games.html">Games</a></li>
+                <li class="active"><a href="/pages/currentGame.html">Current Game <span class="sr-only">(current)</span></a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container theme-showcase" role="main">
+        <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+            <thead>
+                <tr>
+                <th style="text-align:center;"><button type="button" class="btn btn-sm btn-default">MENU</button></th>
+                <th colspan="2" style="text-align:center;">12:00 <button type="button" class="btn btn-xs btn-default">edit</button><br>1st Quarter </th>
+                <th style="text-align:center;"><button type="button" class="btn btn-sm btn-default">START</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td style="text-align:center;">LIGHT</td>
+                <td colspan="2" style="text-align:center;"></td>
+                <td style="text-align:center;">DARK</td>
+                </tr>
+                <tr>
+                <td style="text-align:center;font-weight: bold;">28</td>
+                <td colspan="2" style="text-align:center;">Score</td>
+                <td style="text-align:center;font-weight: bold;">24</td>
+                </tr>
+                <tr>
+                <td style="text-align:center;">7</td>
+                <td colspan="2" style="text-align:center;">Team Fouls</td>
+                <td style="text-align:center;">4</td>
+                </tr>
+                <tr>
+                <td style="text-align:center;">0</td>
+                <td colspan="2" style="text-align:center;">Timeouts Left</td>
+                <td style="text-align:center;">1</td>
+                </tr>
+                <tr>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">TECH</button></td>
+                <td colspan="2" style="text-align:center;"></td>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">TECH</button></td>
+                </tr>
+                <tr>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">FOUL</button></td>
+                <td colspan="2" style="text-align:center;"></td>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">FOUL</button></td>
+                </tr>
+                <tr>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">1 PT</button></td>
+                <td colspan="2" style="text-align:center;"></td>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">1 PT</button></td>
+                </tr>
+                <tr>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">3 PT</button></td>
+                <td colspan="2" style="text-align:center;"></td>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">3 PT</button></td>
+                </tr>
+                <tr>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">2 PT</button></td>
+                <td colspan="2" style="text-align:center;"></td>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">2 PT</button></td>
+                </tr>
+                <tr>
+                <td colspan="3"><strong>Last play:</strong> Light scored 2 Points</td>
+                <td style="text-align:center;"><button type="button" class="btn btn-sm btn-default">UNDO</button></td>
+                </tr>
+            </tbody>
+            </table>
+            <table class="table">
+            <form action="/api/statEvent/add" method="post">
+            <tbody>
+                <tr><input id="statTypeId" name="statTypeId" type="text" placeholder="statTypeID" class="form-control"></tr>
+                <tr><input id="value" name="value" placeholder="value" class="form-control"></tr>
+                <tr><input id="gameId" name="gameId" placeholder="gameId" class="form-control"></tr>
+                <tr><input id="teamId" name="teamId" placeholder="teamId" class="form-control"></tr>
+                <tr><input id="playerId" name="playerId" placeholder="playerId" class="form-control"></tr>
+            </tbody>
+            <button id="addStatEvent" type="submit" class="btn btn-primary">Add to Stat Event!</button>
+            
+            </form>
+            </table>
+        </div>
+        </div>
+    
+   
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>    
+  </body>
+</html>

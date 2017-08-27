@@ -1,0 +1,56 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+    <!-- start of main grid -->
+    <div class="grid-container grid-container-padded">
+         <div class="cell">
+            <h2>Stat Types</h2>       
+        </div>
+        <!-- start of 'create new league form' -->
+        <div class="grid-x grid-margin-x">
+            <div class="medium-6 large-4 cell">
+                <h4>Add new stat type</h4>
+                <form>
+                <div class="row">
+                    <div class="medium-6 columns">
+                    <label>Stat type name
+                        <input type="text" placeholder="Stat type name">
+                    </label>                 
+                    <label>Sport
+                        <select>
+                            <option value="" selected disabled>Please select</option>
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>                            
+                        </select>
+                    </label>                   
+                    <input type="submit" class="button" value="Submit">
+                    </div>                    
+                </div>
+                </form>
+            </div> <!-- ./medium-6 large-4 cell -->
+
+            <!-- start of 'existing leagues table' -->
+            <div class="medium-6 large-8 cell">
+                <h4>Existing stat types</h4>
+               <table>
+                <thead>
+                    <tr>
+                    <th>Stat type name</th>
+                    <th>Sport</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(statType) { %>
+                       <tr>
+                         <td><%= statType.name %></td>
+                         <td><%= statType.sport %></td>                         
+                       </tr>
+                    <% }); %>                    
+                </tbody>
+                </table>
+            </div> <!-- ./medium-6 large-8 cell -->
+        </div> <!-- ./grid-x grid-margin-x -->
+    </div> <!-- ./grid-container grid-container-padded -->
+
+<% include partials/footer %>

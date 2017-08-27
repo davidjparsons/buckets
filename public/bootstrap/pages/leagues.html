@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Buckets - Front End</title>
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="bundle.js"></script>  
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Buckets</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Admin</a></li>
+                <li class="active"><a href="/public/pages/leagues.html">Leagues</a></li>
+                <li><a href="/public/pages/teams.html">Teams</a></li>
+                <li><a href="/public/pages/players.html">Players</a></li>
+                <li><a href="/public/pages/statTypes.html">Stat Types</a></li>
+                <li><a href="/public/pages/games.html">Games</a></li>
+                <li><a href="/public/pages/currentGame.html">Current Game <span class="sr-only">(current)</span></a></li>
+            </ul>
+             <form class="navbar-form navbar-right">
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <!-- start of add league form -->
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">Create new league</div>
+                <div class="panel-body">
+                <form action="/api/league" method="post">
+
+                    <div class="form-group">
+                    <label class="control-label">League name</label>
+                    <input type="text" name="name" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label">Location</label>
+                    <input type="text" name="location" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label">Sport</label>
+                    <input type="text" name="sport" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-default">Create new league</button>
+                </form>
+                </div>
+        </div>
+    </div>
+
+    <!-- start of existing leagues -->
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">Existing leagues</div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-border">
+                            <thead>
+                            <tr>
+                            <th>League name</th>
+                            <th>Location</th>
+                            <th>Sport</th>
+                            </tr>
+                            </thead>
+                            <tbody id="existingLeagues">
+                            <tr>
+                            <td id="name">KGV 1</td>
+                            <td id="location">KGV</td>
+                            <td id="sport">Basketball</td>
+                            </tr>
+                            <tr>
+                            <td id="name">KGV 4</td>
+                            <td id="location">KGV</td>
+                            <td id="sport">Basketball</td>
+                            </tr>
+                            <tr>
+                            <td id="name">Cook and Phillip 2</td>
+                            <td id="location">Cook and Phillip</td>
+                            <td id="sport">Basketball</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+          
+   
+  </body>
+</html>

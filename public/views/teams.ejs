@@ -1,0 +1,83 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+    <!-- start of main grid -->
+    <div class="grid-container grid-container-padded">
+         <div class="cell">
+            <h2>Teams</h2>       
+        </div>
+        <!-- start of 'create new league form' -->
+        <div class="grid-x grid-margin-x">
+            <div class="medium-6 large-4 cell">
+                <h4>Add new team</h4>
+                <form action="/api/team" method="post">
+                <div class="row">
+                    <div class="medium-6 columns">
+                    <label>Team name
+                        <input type="text" name="name" placeholder="Team name">
+                    </label>                 
+                    <label>League
+                            <select id="leagues">
+                                <option value="" selected disabled>Please select</option>                                
+                            </select>                                       
+                    </label>                   
+                    <input type="submit" class="button" value="Submit">
+                    </div>                    
+                </div>
+                </form>
+            </div> <!-- ./medium-6 large-4 cell -->
+              
+<script>
+var data = [
+    { name: "Mal Reynolds" },
+    { name: "Piet Heyn" }
+];
+
+// fetch('api/league').then(function(response) {
+//   return response.json();
+// }).then(function(j) {
+//   console.log(j);
+// }).catch(function() {
+//   console.log("Booo");
+// });
+
+
+var elm = document.getElementById("leagues");
+
+for (var i = 0, len = data.length; i < len; i++) {
+    var name = data[i].name;
+    var option = document.createElement("option");
+    option.value = i;
+    option.textContent = name;
+    elm.add(option);
+}
+</script>
+
+
+
+           <!-- start of 'existing leagues table' -->
+            <div class="medium-6 large-8 cell">
+                <h4>Existing teams</h4>
+               <table>
+                <thead>
+                    <tr>
+                    <th>Team ID</th>
+                    <th>Team name</th>
+                    <th>League</th>
+                    </tr>
+                </thead>
+               <tbody>
+                    <% data.forEach(function(team) { %>
+                       <tr>
+                         <td><%= team.id %></td>
+                         <td><%= team.name %></td>
+                         <td><%= team.leagueId %></td>
+                       </tr>
+                    <% }); %>                    
+                </tbody>
+                </table>
+            </div> <!-- ./medium-6 large-8 cell -->
+        </div> <!-- ./grid-x grid-margin-x -->
+    </div> <!-- ./grid-container grid-container-padded -->
+
+<% include partials/footer %>

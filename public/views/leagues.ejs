@@ -1,0 +1,91 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+    <!-- start of main grid -->
+    <div class="grid-container grid-container-padded">
+         <div class="cell">
+            <h2>Leagues</h2>       
+        </div>
+        <!-- start of 'create new league form' -->
+        <div class="grid-x grid-margin-x">
+            <div class="medium-6 large-4 cell">
+                <h4>Create new league</h4>
+                <form action="/api/league" method="post">
+                <div class="row">
+                    <div class="medium-6 columns">
+                    <label>League name
+                        <input type="text" name="name" placeholder="League name">
+                    </label>
+                    </div>
+                    <div class="medium-6 columns">
+                    <label>Location
+                        <input type="text" name="location" placeholder="Location">
+                    </label>
+                    </div>
+                    <div class="medium-6 columns">
+                    <label>Sport
+                        <select name="sport">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="basketball">Basketball</option>
+                            <option value="soccer">Soccer</option>
+                            <option value="rugbyLeague">Rugby League</option>                            
+                        </select>
+                    </label>
+                    </div>
+                     <div class="medium-6 columns">
+                        <input type="submit" class="button" value="Submit">
+                    </div>                    
+                </div>
+                </form>
+            </div> <!-- ./medium-6 large-4 cell -->
+
+            <!-- start of 'existing leagues table' -->
+            <!-- <div class="medium-6 large-8 cell">
+                <h4>Existing leagues</h4>
+               <table>
+                <thead>
+                    <tr>
+                    <th width="200">League name</th>
+                    <th>Location</th>
+                    <th width="150">Sport</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < data.length; i++) { %>
+                       <tr>
+                         <td><%= data[i].id %></td>
+                         <td><%= data[i].name %></td>
+                         <td><%= data[i].sport %></td>
+                       </tr>
+                    <% } %>                    
+                </tbody>
+                </table>
+            </div> --> <!-- ./medium-6 large-8 cell -->
+             <div class="medium-6 large-8 cell">
+                <h4>Existing leagues</h4>
+               <table>
+                <thead>
+                    <tr>
+                    <th width="200">League name</th>
+                    <th>Location</th>
+                    <th width="150">Sport</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(league) { %>
+                       <tr>
+                         <td><%= league.name %></td>
+                         <td><%= league.location %></td>
+                         <td><%= league.sport %></td>
+                       </tr>
+                    <% }); %>                    
+                </tbody>
+                </table>
+            </div> <!-- ./medium-6 large-8 cell -->
+        </div> <!-- ./grid-x grid-margin-x -->
+    </div> <!-- ./grid-container grid-container-padded -->
+
+
+
+
+<% include partials/footer %>

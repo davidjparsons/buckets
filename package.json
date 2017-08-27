@@ -5,14 +5,21 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "browserify": "^14.4.0",
+    "cpjax": "^1.1.2",
+    "crel": "^3.0.1",
+    "dion": "^1.0.2",
     "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
     "express": "^4.15.3",
-    "mysql": "^2.13.0"
+    "mysql": "^2.13.0",
+    "righto": "^3.0.3",
+    "sea-lion": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC"
