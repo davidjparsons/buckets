@@ -320,43 +320,70 @@ app.get('/api/team', function (req,res) {
 	});
 });
 
-//player related Endpoints below
-//Endpoint: http://localhost:3000/api/player/add add new. date_of_birth = yyyy-mm-dd
-app.post('/api/player', function (req,res) {
-	var response = [];
+app.post('/api/player', function (request, response) {
+    var first_name = request.body.first_name,
+        last_name = request.body.last_name,   
+        date_of_birth = request.body.date_of_birth,
+        position = request.body.position,        
+        number = request.body.number,    
+        teamId = request.body.teamId;            
 
-	if (
-		typeof req.body.first_name !== 'undefined' && 
-		typeof req.body.last_name !== 'undefined' && 
-		typeof req.body.date_of_birth !== 'undefined' && 
-		typeof req.body.position !== 'undefined' && 
-		typeof req.body.number !== 'undefined' && 		
-        typeof req.body.teamId !== 'undefined' 
-	) {
-		var first_name = req.body.first_name, last_name = req.body.last_name, date_of_birth = req.body.date_of_birth, position = req.body.position, number = req.body.number, teamId = req.body.teamId;
+    if(!first_name || !last_name || !position || !number || !teamId){
+        return response.status(422).send(JSON.stringify({message: 'Please fill required details'}));
+    } 
+    if(!date_of_birth){
+        return response.status(422).send(JSON.stringify({message: 'dob is culprit'}));
+    }
 
 		connection.query('INSERT INTO player (first_name, last_name, date_of_birth, position, number, teamId) VALUES (?, ?, ?, ?, ?, ?)', 
 			[first_name, last_name, date_of_birth, position, number, teamId], 
-			function(err, result) {
-		  		if (err) { res.status(400).send(err); return; }
-                  {
-					if (result.affectedRows != 0) {
-						response.push({'result' : 'success'});
-					} else {
-						response.push({'msg' : 'No Result Found'});
-					}
+        function(error, result){
+            if(error){
+                return response.status(500).send();
+			}
 
-					res.setHeader('Content-Type', 'application/json');
-			    	res.status(200).send(JSON.stringify(response));
-		  		} 
-			});
-
-	} else {
-		response.push({'result' : 'error', 'msg' : 'Please fill required details'});
-		res.setHeader('Content-Type', 'application/json');
-    	res.status(200).send(JSON.stringify(response));
-	}
+			response.status(200).redirect('back');
+        }
+    );
 });
+
+//player related Endpoints below
+//Endpoint: http://localhost:3000/api/player/add add new. date_of_birth = yyyy-mm-dd
+// app.post('/api/player', function (req,res) {
+// 	var response = [];
+
+// 	if (
+// 		typeof req.body.first_name !== 'undefined' && 
+// 		typeof req.body.last_name !== 'undefined' && 
+// 		typeof req.body.date_of_birth !== 'undefined' && 
+// 		typeof req.body.position !== 'undefined' && 
+// 		typeof req.body.number !== 'undefined' && 		
+//         typeof req.body.teamId !== 'undefined' 
+// 	) {
+// 		var first_name = req.body.first_name, last_name = req.body.last_name, date_of_birth = req.body.date_of_birth, position = req.body.position, number = req.body.number, teamId = req.body.teamId;
+
+// 		connection.query('INSERT INTO player (first_name, last_name, date_of_birth, position, number, teamId) VALUES (?, ?, ?, ?, ?, ?)', 
+// 			[first_name, last_name, date_of_birth, position, number, teamId], 
+// 			function(err, result) {
+// 		  		if (err) { res.status(400).send(err); return; }
+//                   {
+// 					if (result.affectedRows != 0) {
+// 						response.push({'result' : 'success'});
+// 					} else {
+// 						response.push({'msg' : 'No Result Found'});
+// 					}
+
+// 					res.setHeader('Content-Type', 'application/json');
+// 			    	res.status(200).send(JSON.stringify(response));
+// 		  		} 
+// 			});
+
+// 	} else {
+// 		response.push({'result' : 'error', 'msg' : 'Please fill required details'});
+// 		res.setHeader('Content-Type', 'application/json');
+//     	res.status(200).send(JSON.stringify(response));
+// 	}
+// });
 
 // Endpoint: http://localhost:3000/api/player/{:player id} search a particular player id
 app.get('/api/player/:id', function (req,res) {

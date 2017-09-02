@@ -17,10 +17,10 @@
                         <input type="text" name="name" placeholder="Team name">
                     </label>                 
                     <label>League
-                            <select id="leagues">
+                            <select name="leagueId" id="addTeam">
                                 <option value="" selected disabled>Please select</option>                                
                             </select>                                       
-                    </label>                   
+                    </label>                                
                     <input type="submit" class="button" value="Submit">
                     </div>                    
                 </div>
@@ -28,30 +28,50 @@
             </div> <!-- ./medium-6 large-4 cell -->
               
 <script>
-var data = [
-    { name: "Mal Reynolds" },
-    { name: "Piet Heyn" }
-];
+// var data = [
+//     { name: "Mal Reynolds" },
+//     { name: "Piet Heyn" }
+// ];
 
-// fetch('api/league').then(function(response) {
-//   return response.json();
-// }).then(function(j) {
-//   console.log(j);
-// }).catch(function() {
-//   console.log("Booo");
-// });
+ 
+//var data = 
+fetch('api/league').then(function(response) { 
+  // Convert to JSON
+  return response.json();
+}).then(function(j) {
+  // Yay, `j` is a JavaScript object
+  console.log(j[0].data.length);
+  console.log(j[0].data);
+  {
+    var elm = document.getElementById("addTeam");
+
+    for (var i = 0, len = j[0].data.length; i < len; i++) {
+        var name = j[0].data[i].name;
+        var id = j[0].data[i].id;
+        var option = document.createElement("option");
+        option.value = id;
+        option.textContent = name;
+        elm.add(option);
+    }
+  };
+});
 
 
-var elm = document.getElementById("leagues");
-
-for (var i = 0, len = data.length; i < len; i++) {
-    var name = data[i].name;
-    var option = document.createElement("option");
-    option.value = i;
-    option.textContent = name;
-    elm.add(option);
-}
+//lewis's solution
+// var myData = [];
+// console.log(myData); // empty array
+// fetch('api/league') // [1,2,3,4,5]
+//     .then((resp) => resp.json())
+//     .then(function(data) { 
+//         myData.push(...data);
+//     }
+// )
+// console.log(myData); //[1,2,3,4,5]
 </script>
+
+
+
+
 
 
 

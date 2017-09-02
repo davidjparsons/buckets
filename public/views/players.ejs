@@ -10,30 +10,30 @@
         <div class="grid-x grid-margin-x">
             <div class="medium-6 large-4 cell">
                 <h4>Add new player</h4>
-                <form>
+                <form action="/api/player" method="post">
                 <div class="row">
                     <div class="medium-6 columns">
                     <label>First name
-                        <input type="text" placeholder="First name">
+                        <input name="first_name" type="text" placeholder="First name">
                     </label>
                     <label>Last name
-                        <input type="text" placeholder="Last name">
+                        <input name="last_name" type="text" placeholder="Last name">
                     </label>
                     <label>Date of birth
-                        <input type="date" placeholder="">
+                        <input name="date_of_birth" type="date" placeholder="">
                     </label> 
                     <label>Number
-                        <input type="number" $input-number-spinners.false>
+                        <input name="number" type="number" $input-number-spinners.false>
                     </label>   
                     <label>Position
-                        <input type="text" placeholder="Postion">
+                        <input name="position" type="text" placeholder="Postion">
                     </label>                                          
                     <label>Team
-                        <select>
+                        <select name="teamId" id="addPlayer">
                             <option value="" selected disabled>Please select</option>
-                            <option value="a">A</option>
+                          <!--   <option value="a">A</option>
                             <option value="b">B</option>
-                            <option value="c">C</option>                            
+                            <option value="c">C</option>   -->                          
                         </select>
                     </label>                                     
                     <input type="submit" class="button" value="Submit">
@@ -41,6 +41,37 @@
                 </div>
                 </form>
             </div> <!-- ./medium-6 large-4 cell -->
+
+
+            <script>
+            // var data = [
+            //     { name: "Mal Reynolds" },
+            //     { name: "Piet Heyn" }
+            // ];
+
+             
+            var data = fetch('api/team').then(function(response) { 
+              // Convert to JSON
+              return response.json();
+            }).then(function(j) {
+              // Yay, `j` is a JavaScript object
+              console.log(j[0].data.length);
+              console.log(j[0].data);
+              {
+                var elm = document.getElementById("addPlayer");
+
+                for (var i = 0, len = j[0].data.length; i < len; i++) {
+                    var name = j[0].data[i].name;
+                    var id = j[0].data[i].id;
+                    var option = document.createElement("option");
+                    option.value = id;
+                    option.textContent = name;
+                    elm.add(option);
+                }
+              };
+            });
+            </script>
+
 
             <!-- start of 'existing leagues table' -->
             <div class="medium-6 large-8 cell">
@@ -62,8 +93,8 @@
                          <td><%= player.first_name %></td>
                          <td><%= player.last_name %></td>
                          <td><%= player.date_of_birth.toDateString() %></td>
-                         <td><%= player.position %></td>
                          <td><%= player.number %></td>
+                         <td><%= player.position %></td>                         
                          <td><%= player.teamId %></td>
                        </tr>
                     <% }); %>                    
