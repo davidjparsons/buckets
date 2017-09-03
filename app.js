@@ -1,9 +1,12 @@
 // Basic Setup
-var http     = require('http'),
-	express  = require('express'),
-	mysql    = require('mysql')
+var http     = require('http');
+	express  = require('express');
+	mysql    = require('mysql');
 	parser   = require('body-parser');
-    dotenv   = require('dotenv').config()
+    dotenv   = require('dotenv').config();
+
+// //EasyTimer.js
+// var Timer = require('easytimer');
  
 // Database Connection
 var connection = mysql.createConnection({

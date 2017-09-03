@@ -296,12 +296,12 @@
             </button>
 
             <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
-              <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">LIGHT</a></li>
-              <li class="tabs-title"><a href="#panel2c">DARK</a></li>
+              <li class="tabs-title is-active"><a href="#panel5c" aria-selected="true">LIGHT</a></li>
+              <li class="tabs-title"><a href="#panel6c">DARK</a></li>
             </ul>
 
             <div class="tabs-content" data-tabs-content="collapsing-tabs">
-              <div style="background-color:#e6e6e6;" class="tabs-panel is-active" id="panel1c">
+              <div style="background-color:#e6e6e6;" class="tabs-panel is-active" id="panel5c">
                     <h4>Active</h3>
                     <table>    
                         <thead>
@@ -365,7 +365,7 @@
                         </tbody>
                     </table>
               </div>
-              <div style="background-color:#e6e6e6;" class="tabs-panel" id="panel2c">
+              <div style="background-color:#e6e6e6;" class="tabs-panel" id="panel6c">
                 <h4>Active</h3>
                     <table>    
                         <thead>
@@ -443,12 +443,23 @@
         </div>
         <!-- start of 'create new league form' -->
         <div class="grid-x grid-margin-x">
-        <table class="unstriped">
+        
+        
+        <!-- https://stackoverflow.com/questions/31948235/stopwatch-timer-save-var-and-show-in-high-score-list-html-js -->
+        <!-- <span id="time">12:00</span>
+        <input class="button success" value="start" onclick="start();">
+        <input class="button primary" value="stop" onclick="stop();">
+        <input class="button alert" value="reset" onclick="reset()">      -->   
+        <script src="../js/gametimer.js"></script>
+
+
+
+        <table class="unstriped">  
             <thead>
                 <tr>
-                <th style="text-align:center;"><button type="button" class="hollow button secondary">Menu</button></th>
-                <th  style="text-align:center;">12:00 <button type="button" class="hollow button secondary tiny">edit</button><br>1st Quarter </th>
-                <th style="text-align:center;"><button type="button" class="hollow button secondary">START</button></th>
+                <th style="text-align:center;"><button class="button success expanded" onclick="start();">START</button></th>
+                <th style="text-align:center;"><span id="time">12:00</span><button type="button" class="hollow button secondary tiny" data-open="editTimerModal">edit</button><br>1st Qtr</th>
+                <th style="text-align:center;"><button class="button alert expanded" onclick="stop();">STOP</button></th>
                 </tr>
             </thead>
             <tbody>
@@ -505,14 +516,32 @@
 
             <!-- timeout modal -->
             <div class="tiny reveal"  id="exampleModal1" data-reveal>
-                </br><p>TEAM CALLING TIMEOUT</p>
+                <div style="text-align:center;"></br><p>TEAM CALLING TIMEOUT</p>
                 <button type="button" class="hollow button secondary" data-toggle="offCanvasLeft1">LIGHT</button>        
                 <button type="button" class="button secondary" data-toggle="offCanvasRight1">DARK</button>                
                 <button class="close-button" data-close aria-label="Close modal" type="button">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </button></div>
             </div>
             <!-- end timeout modal -->
+
+            <!-- editTimerModal modal -->
+            <div class="tiny reveal"  id="editTimerModal" data-reveal>
+                <div style="text-align:center;">
+                <label>Set Minutes
+                  <input type="text">
+                </label>
+                <label>Set Seconds
+                  <input type="text">
+                </label>
+                <input class="button small hollow" value="Set game time" onclick="setGameTime()">
+                <input class="button warning small" value="Reset game time" onclick="reset()">                                
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button></div>
+            </div>
+            <!-- end timeout modal -->
+
 
 
         </div> <!-- ./grid-x grid-margin-x -->
